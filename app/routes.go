@@ -18,13 +18,13 @@ func (a *App) loadRoutes() {
 	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 	})
+
 	router.Route("/orders", a.loadOrderRoutes)
 
 	a.router = router
 }
 
 func (a *App) loadOrderRoutes(router chi.Router) {
-
 	orderHandler := &handler.Order{
 		Repo: &order.RedisRepository{
 			Client: a.rdb,

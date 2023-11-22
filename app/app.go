@@ -18,6 +18,7 @@ func New() *App {
 	app := &App{
 		rdb: redis.NewClient(&redis.Options{}),
 	}
+	app.loadRoutes()
 	return app
 }
 

@@ -25,7 +25,7 @@ func (r *RedisRepository) Insert(ctx context.Context, order model.Order) error {
 		return fmt.Errorf("error marshalling order: %w", err)
 	}
 
-	key := orderIDKey(order.OrderId)
+	key := orderIDKey(order.OrderID)
 
 	txn := r.Client.TxPipeline()
 
@@ -95,7 +95,7 @@ func (r *RedisRepository) Update(ctx context.Context, order model.Order) error {
 	if err != nil {
 		return fmt.Errorf("error marshalling order: %w", err)
 	}
-	key := orderIDKey(order.OrderId)
+	key := orderIDKey(order.OrderID)
 
 	err = r.Client.SetXX(ctx, key, string(data), 0).Err()
 	if errors.Is(err, redis.Nil) {
