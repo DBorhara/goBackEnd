@@ -8,7 +8,7 @@ import (
 
 type Order struct {
 	OrderId     uint64         `json:"order_id"`
-	CustomerID  uuid.UUI       `json:"customer_id"`
+	CustomerID  uuid.UUID      `json:"customer_id"`
 	Products    []OrderProduct `json:"products"`
 	CreatedAt   *time.Time     `json:"created_at"`
 	ShippedAt   *time.Time     `json:"shipped_at"`
